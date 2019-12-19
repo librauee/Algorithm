@@ -21,29 +21,20 @@ def check(row,column):
     for k in range(8):
         if Queen[k][column]==1:
             return False
+        
     # 检查主对角线    
-#    i=row-1
-#    j=column-1
-#    
-#    while i>=0 and j>=0:
-#        if Queen[i][j]==1:
-#            return False    
-#        i-=1
-#        j-=1
     
     for i,j in zip(range(row-1,-1,-1),range(column-1,-1,-1)):
         if Queen[i][j]==1:
             return False   
         
+    # 检查副对角线     
     for i,j in zip(range(row-1,-1,-1),range(column+1,8)):
         if Queen[i][j]==1:
             return False          
-    
-    
-    # 检查副对角线   
+
     return True
     
-
     
 
 def find_Queen(row):

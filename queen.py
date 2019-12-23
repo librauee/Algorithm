@@ -8,11 +8,12 @@ Created on Wed Dec 18 23:06:03 2019
 
 def print_queen():
     
-    # print(Queen)
+    print(Queen)
     for i in range(8):
         for j in range(8):
             if Queen[i][j]==1:
                 print('☆ '*j+'★ '+'☆ '*(7-j))
+    print("\n\n")
             
             
 def check(row,column):
@@ -43,18 +44,40 @@ def find_Queen(row):
         global count
         count+=1
         print_queen()
-        return 
+        return
     
     for column in range(8):
         if check(row,column):
             Queen[row][column]=1
             find_Queen(row+1)
             Queen[row][column]=0
-            
-if __name__=='__main__':      
+
+          
+if __name__=='__main__':    
      
     Queen=[[0 for i in range(8)] for i in range(8)]
     count=0
     find_Queen(0)
     print(count)
+            
+            
+ 
+
+
+# 另解           
+def queen(A, cur=0):
+    if cur == len(A):
+        print(A)
+        return 0
+    for col in range(len(A)):
+        A[cur], flag = col, True
+        for row in range(cur):
+            if A[row] == col or abs(col - A[row]) == cur - row:
+                flag = False
+                break
+        if flag:
+            queen(A, cur+1)
+queen([None]*8)
+
+
 

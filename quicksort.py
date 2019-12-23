@@ -34,11 +34,11 @@ def Partition1(A,p,r):
     k=random.randint(p,r)
     x=A[k]
     i=p-1
-    for j in range(p,r):
+    for j in range(p,k):
         if A[j]<=x:
             i+=1
             A[i],A[j]=A[j],A[i]
-    A[i+1],A[r]=A[r],A[i+1]
+    A[i+1],A[k]=A[k],A[i+1]
     return i+1
 
 
@@ -75,12 +75,14 @@ def quicksort_random(arr):
     right = [x for x in arr if x > pivot]
     return quicksort_random(left) + middle + quicksort_random(right)
 
-#A=[i for i in range(10000000)][::-1]
-A=[random.randint(1,10000000) for i in range(10000000)]
+
+A=[random.randint(1,1000000) for i in range(10000000)]
+#A=quicksort_random(A)
+
 import time
 
 time1,time2,time3,time4,time5=[],[],[],[],[]
-for i in range(1,6):
+for i in range(1,4):
 
     
     start1=time.time()

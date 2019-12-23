@@ -32,14 +32,9 @@ def Quick_Sort_Random(A,p,r):
         
 def Partition1(A,p,r):
     k=random.randint(p,r)
-    x=A[k]
-    i=p-1
-    for j in range(p,k):
-        if A[j]<=x:
-            i+=1
-            A[i],A[j]=A[j],A[i]
-    A[i+1],A[k]=A[k],A[i+1]
-    return i+1
+    A[k],A[r]=A[r],A[k]
+
+    return Partition(A,p,r)
 
 
 
@@ -76,8 +71,8 @@ def quicksort_random(arr):
     return quicksort_random(left) + middle + quicksort_random(right)
 
 
-A=[random.randint(1,1000000) for i in range(10000000)]
-#A=quicksort_random(A)
+A=[random.randint(1,1000000) for i in range(10000)]
+A=quicksort_random(A)
 
 import time
 
